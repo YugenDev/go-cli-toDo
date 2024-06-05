@@ -28,7 +28,7 @@ func ListTask(tasks []Task) {
 }
 
 func AddTask(tasks []Task, name string) []Task {
-	newTask := task{
+	newTask := Task {
 		ID: 10,
 		Name: name,
 		Complete: false,
