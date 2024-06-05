@@ -41,6 +41,17 @@ func main() {
 		tasks = []task.Task{}
 	}
 
-	fmt.Println(tasks)
+	if len(os.Args) < 2 {
+		printUsage()
+	}
 
+	switch os.Args[1] {
+	case "list":
+		task.ListTask(tasks)
+	}
+
+}
+
+func printUsage() {
+	fmt.Println("Uso: go-cli-ToDo [list|add|complete|delete]")
 }
