@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strconv"
 	"strings"
 
 	task "github.com/YugenDev/go-cli-toDo/tasks"
@@ -53,6 +54,7 @@ func main() {
 	case "add":
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Println("¿Que tarea quieres agregar?")
+		fmt.Print("> ")
 
 		name, err := reader.ReadString('\n')
 		if err != nil {
@@ -61,6 +63,29 @@ func main() {
 		name = strings.TrimSpace(name)
 
 		tasks = task.AddTask(tasks, name)
+		task.SaveTask(file, tasks)
+		task.ListLastTask(tasks)
+
+	case "delete":
+
+		id, err := strconv.Atoi(os.Args[2])
+		if err != nil {
+			fmt.Println("El ID debe ser un número")
+			return
+		}
+
+		if len(os.Args) < 3 {
+			fmt.Println("Proporciona un ID para eliminar")
+			return
+		}
+
+		if !task.TaskExist(tasks, id) {
+			fmt.Println("ID no existe")
+			return
+		}
+
+		
+		tasks = task.DeleteTask(tasks, id)
 		task.SaveTask(file, tasks)
 	}
 
