@@ -26,3 +26,13 @@ func ListTask(tasks []Task) {
 		fmt.Printf("[%s] %d %s\n", status, task.ID, task.Name)
 	}
 }
+
+func AddTask(tasks []Task, name string) []Task {
+	newTask := task{
+		ID: 10,
+		Name: name,
+		Complete: false,
+	}
+
+	return append(tasks, newTask)
+}

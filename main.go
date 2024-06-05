@@ -1,10 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"encoding/json"
 	"fmt"
 	"io"
 	"os"
+	"strings"
 
 	task "github.com/YugenDev/go-cli-toDo/tasks"
 )
@@ -48,6 +50,17 @@ func main() {
 	switch os.Args[1] {
 	case "list":
 		task.ListTask(tasks)
+	case "add":
+		reader := bufio.NewReader(os.Stdin)
+		fmt.Println("¿Que tarea quieres agregar?")
+
+		name, err := reader.ReadString('\n')
+		if err != nil {
+			panic(err)
+		}
+		name = strings.TrimSpace(name)
+
+		
 	}
 
 }
