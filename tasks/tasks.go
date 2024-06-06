@@ -96,7 +96,7 @@ func ListLastTask(tasks []Task) Task {
 	return lastTask
 }
 
-func DeleteTask(tasks []Task, id int) []Task{
+func DeleteTask(tasks []Task, id int) []Task {
 	for i, task := range tasks {
 		if task.ID == id {
 			return append(tasks[:i], tasks[i+1:]...)
@@ -112,4 +112,17 @@ func TaskExist(tasks []Task, id int) bool {
 		}
 	}
 	return false
+}
+
+func CompleteTask(tasks []Task, id int) []Task {
+	for i, task := range tasks {
+		if task.ID == id {
+			tasks[i].Complete = true
+			fmt.Println("")
+			fmt.Println(Cyan + "¡Se completó la tarea!" + Reset)
+			fmt.Printf("-> [%s] %d %s\n", "✓", task.ID, task.Name)
+			break
+		}
+	}
+	return tasks
 }
