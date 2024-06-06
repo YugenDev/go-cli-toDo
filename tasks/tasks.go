@@ -102,7 +102,7 @@ func DeleteTask(tasks []Task, id int) []Task {
 		if task.ID == id {
 			fmt.Println("")
 			fmt.Println(Cyan + "¡Se eliminó la tarea!" + Reset)
-			fmt.Printf("-> %d %s\n", task.ID, task.Name)
+			fmt.Printf("-> [X] %d %s\n", task.ID, task.Name)
 			return append(tasks[:i], tasks[i+1:]...)
 		}
 	}
