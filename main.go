@@ -46,6 +46,7 @@ func main() {
 
 	if len(os.Args) < 2 {
 		printUsage()
+		return
 	}
 
 	switch os.Args[1] {
@@ -108,7 +109,7 @@ func main() {
 		task.SaveTask(file, tasks)
 
 	}
-
+	
 }
 
 func printUsage() {

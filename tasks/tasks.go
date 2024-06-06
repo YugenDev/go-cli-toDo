@@ -37,6 +37,7 @@ func ListTask(tasks []Task) {
 		fmt.Printf("[%s] %d %s\n", status, task.ID, task.Name)
 	}
 	fmt.Println(" ")
+
 }
 
 func AddTask(tasks []Task, name string) []Task {
